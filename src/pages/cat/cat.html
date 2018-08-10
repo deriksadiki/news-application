@@ -1,0 +1,92 @@
+
+<ion-header>
+    <ion-navbar >
+      <ion-title>    
+              <ion-segment [(ngModel)]="weather">
+                <ion-segment-button value="top">
+                Top Stories
+                </ion-segment-button>
+                <ion-segment-button value="category">
+                    Categories
+                </ion-segment-button>
+              </ion-segment>
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+
+
+
+  <div [ngSwitch]="weather">
+    <ion-list *ngSwitchCase = "'top'">   
+        <ion-list *ngFor="let i of newsARR; let i = index ">
+            <ion-card (click)="more2(i)">
+                <img [src]="i.urlToImage">
+              <ion-card-content>
+                <ion-card-title>
+                    <h2>{{i.title}}</h2>
+                </ion-card-title>
+                    <p><ion-icon ios="ios-calendar" md="md-calendar"></ion-icon> {{i.publishedAt}}</p>
+              </ion-card-content>
+            </ion-card>
+            </ion-list>
+    </ion-list>
+ 
+  </div>
+
+  <div [ngSwitch] ="weather">
+      <ion-list *ngSwitchCase = "'category'">   
+          <div cards>
+
+              <div class="grid-full">
+                <ion-row>
+                  <ion-col>
+                    <ion-card (click) =  "more('science')" color="gen">
+                      <h1><ion-icon ios="ios-flask" md="md-flask"></ion-icon></h1>
+                      <p>Science</p>
+                    </ion-card>
+                  </ion-col>
+          
+                  <ion-col>
+                    <ion-card (click) =  "more('business')"  color="en">
+                      <h1> <ion-icon ios="logo-usd" md="logo-usd"></ion-icon></h1>
+                      <p>Business</p>
+                    </ion-card>
+                  </ion-col>
+          
+                  <ion-col>
+                    <ion-card (click) =  "more('technology')" color="sports">
+                      <h1 ><ion-icon ios="ios-laptop" md="md-laptop"></ion-icon></h1>
+                      <p>Technology</p>
+                    </ion-card>
+                  </ion-col>
+                  
+                  <ion-col>
+                      <ion-card (click) =  "more('sports')"  color="yelllow">
+                        <h1><ion-icon name="football"></ion-icon></h1>
+                        <p>Sports</p>
+                      </ion-card>
+                    </ion-col>
+      
+                    <ion-col>
+                        <ion-card (click) =  "more('health')" color="green">
+                          <h1> <ion-icon ios="ios-medkit" md="md-medkit"></ion-icon></h1>
+                          <p>Health</p>
+                        </ion-card>
+                      </ion-col>
+      
+                      <ion-col>
+                          <ion-card (click) =  "more('general')"  color="blue">
+                            <h1> <ion-icon ios="ios-people" md="md-people"></ion-icon></h1>
+                            <p>General</p>
+                          </ion-card>
+                        </ion-col>
+                  </ion-row>
+              </div>
+            </div>  
+        </ion-list>
+  </div>
+
+</ion-content>
